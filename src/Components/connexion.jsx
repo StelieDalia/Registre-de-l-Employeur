@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -28,9 +29,6 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-const handleRedirect = (url) => {
-  window.open(url, '_blank');
-};
 
 export default function SignIn() {
   const handleSubmit = (event) => {
@@ -78,18 +76,22 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            <br/><br/>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Se souvenir de moi"
             />
-            <Link to="/checkout" onClick={() => handleRedirect('checkout')}><Button
+
+            <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              href="/Accueil"
             >
               Se connecter
-            </Button></Link>
+            </Button>
+            
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2" style={{ textDecoration: 'none' }}>
@@ -97,9 +99,9 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/inscription" onClick={() => handleRedirect('inscription')} variant="body2" style={{ textDecoration: 'none' }}>
-                  {"Pas encore de compte? Inscrivez vous"}
-                </Link>
+              <Link href="/inscription" variant="body2" style={{ textDecoration: 'none' }}>
+              {"Pas encore de compte? Inscrivez vous"}
+              </Link>
               </Grid>
             </Grid>
           </Box>

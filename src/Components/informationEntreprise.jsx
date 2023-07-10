@@ -46,7 +46,7 @@ export default function CustomizedTables() {
   }, []);
 
   const getListes = async () => {
-    const response = await axios.get('http://localhost:5001/api/registre_Employeur');
+    const response = await axios.get("http://localhost:5001/api/Registre_Employeur");
     console.log(response.data);
     setListes(response.data);
   };
@@ -67,9 +67,9 @@ export default function CustomizedTables() {
         </TableHead>
         <TableBody>
           {listes.map((row) => (
-            <StyledTableRow >
+            <StyledTableRow key={row.id_Registre_Employeur}>
               <StyledTableCell component="th" scope="row">
-                
+                {row.id_Registre_Employeur}
               </StyledTableCell>
               <StyledTableCell align="right">{row.fullName}</StyledTableCell>
               <StyledTableCell align="right">{row.emploi}</StyledTableCell>
@@ -84,4 +84,3 @@ export default function CustomizedTables() {
   </div>
   );
 }
-

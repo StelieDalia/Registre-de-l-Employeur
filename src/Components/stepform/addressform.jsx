@@ -68,9 +68,9 @@ export default function AddressForm({
   return (
     <form >
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Condition d'emploi
-      </Typography>
+      <Typography variant="h6" gutterBottom style={{ marginLeft:'28%' }}>
+        CONDITION D'EMPLOI
+      </Typography><br/>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h15" gutterBottom><span className="light-text">

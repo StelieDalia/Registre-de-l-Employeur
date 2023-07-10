@@ -16,6 +16,8 @@ import PaymentForm from './PaymentForm';
 import AddressForm from './addressform';
 import axios from 'axios'
 import { useState } from "react";
+import logo2 from '../logo2.jpg'
+
 
 
 
@@ -36,7 +38,7 @@ function Copyright() {
 
 
 
-const steps = ['condition d emploi', 'Informations de l employé'];
+const steps = ['condition d emploi', 'Informations sur l employé'];
 
 
 
@@ -148,9 +150,6 @@ export default function Checkout() {
 
   const [activeStep, setActiveStep] = React.useState(0);
 
-  
-
-
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
@@ -187,10 +186,8 @@ export default function Checkout() {
     }
   function handleSubmit () {
     console.log(dalia)
-
-    setActiveStep(activeStep + 1);
     
-    axios.post('http://localhost:3001/ajout/Registre_Employeur', dalia)
+    axios.post('http://localhost:5001/api/registre_Employeur', dalia)
     .then(response => {
       console.log(response.data); // Affiche la réponse du serveur pour la deuxième étape
       // Vous pouvez effectuer des actions supplémentaires ici, si nécessaire
@@ -199,7 +196,17 @@ export default function Checkout() {
     .catch(error => {
       console.error(error);
     });
+
+    if (activeStep === 2) {
+      setActiveStep(1); // Réinitialiser à la première étape
+    } else {
+      setActiveStep(activeStep + 1);
+    }
   
+  };
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
   };
   
 
@@ -217,24 +224,23 @@ export default function Checkout() {
       >
         <Toolbar>
           <div className='nav'>
-          <Typography variant="h6" color="inherit" noWrap>
-            Nom de la société
-          </Typography>
-          <Link to="/Liste" onClick={() => handleRedirect('Liste')}><Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Liste des employés
-            </Button></Link>
+            <div className='type'>
+            <img src={logo2} alt="logo2" className="logo2" style={{width: 80}} /> 
+             
             </div>
+            <Link to="/Liste" onClick={() => handleRedirect('Liste')}><Button
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Liste des employés
+              </Button></Link>
+          </div>
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center">
-            Régistre de l'Employeur
-          </Typography>
+          
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((value) => (
               <Step key={value}>
@@ -244,14 +250,10 @@ export default function Checkout() {
           </Stepper>
           {activeStep === steps.length ? (
             <React.Fragment>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
+              <Typography variant="h3" gutterBottom>
+                Enregistrement terminé
               </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
+              
             </React.Fragment>
           ) : (
             <React.Fragment>
@@ -262,14 +264,20 @@ export default function Checkout() {
                     Retour
           </Button>
       )}
-
                 <Button
                   type='submit'
-                  onClick={handleSubmit}
+                  onClick={handleNext}
                  
                   sx={{ mt: 3, ml: 1 }}
                 >
-                  {activeStep === steps.length - 1 ? 'Valider' : 'Suivant'}
+                  {activeStep === steps.length - 1 ? '' : 'Suivant'}
+          </Button>
+                <Button
+                  type='submit'
+                  onClick={handleSubmit}
+                  sx={{ mt: 3, ml: 1 }}
+                >
+                  {activeStep === steps.length - 1 ? 'Valider' : ''}
           </Button>
               </Box>                
 

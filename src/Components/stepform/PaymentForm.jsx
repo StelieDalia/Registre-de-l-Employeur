@@ -51,9 +51,9 @@ export default function PaymentForm({
 
     <form >
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-      Informations de l'employé
-      </Typography>
+      <Typography variant="h6" gutterBottom style={{ marginLeft:'25%' }}>
+      INFORMATION SUR L'EMPLOYÉ
+      </Typography> <br/>
       <Grid container spacing={3}>
       <Grid item xs={12} md={6}>
         <Typography variant="h15" gutterBottom><span className="light-text">
