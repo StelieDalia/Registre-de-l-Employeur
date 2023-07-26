@@ -7,6 +7,8 @@ import Accueil from './Components/Accueil';
 import Liste from './Components/Liste'
 import Checkout from './Components/stepform/checkout'
 import FicheEmployé from './Components/FicheEmployé'
+import Entreprise from './Components/Entreprise'
+import ListeResponsable from './Components/ListeResponsable'
 
 function App() {
   
@@ -15,6 +17,8 @@ function App() {
       <BrowserRouter>
       <Routes>
         {/* <Route exact path="/" element={<Text />} /> */}
+        <Route exact path="/ListeResponsable" element={<ListeResponsable/>} />
+        <Route exact path="/Entreprise" element={<Entreprise/>} />
         <Route exact path="/FicheEmployé" element={<FicheEmployé/>} />
         <Route exact path="/Accueil" element={<Accueil />} />
         <Route exact path="/Inscription" element={<Signup />} />
