@@ -228,13 +228,7 @@ export default function Checkout() {
             <img src={logo2} alt="logo2" className="logo2" style={{width: 80}} /> 
              
             </div>
-            <Link to="/Liste" onClick={() => handleRedirect('Liste')}><Button
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Liste des employés
-              </Button></Link>
+           
           </div>
         </Toolbar>
       </AppBar>

@@ -295,7 +295,7 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12} sm={6}>
         <Typography variant="h15" gutterBottom><span className="light-text">
-          Durée du congé:
+          Durée du congé (en mois):
           </span></Typography>
         <TextField
               margin="normal"
