@@ -58,7 +58,7 @@ export default function CustomizedTables() {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Liste des Employés</StyledTableCell>
+            <StyledTableCell>Liste des Responsables</StyledTableCell>
             <StyledTableCell align="right">Nom</StyledTableCell>
             <StyledTableCell align="right">Emploi</StyledTableCell>
             <StyledTableCell align="right">Classification</StyledTableCell>
